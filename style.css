@@ -327,6 +327,7 @@ section {
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: 2rem;
+  cursor: pointer;
 }
 
 .skill-tag {
