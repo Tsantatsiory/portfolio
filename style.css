@@ -285,20 +285,10 @@ section {
   position: relative;
 }
 
-.about-image-placeholder {
+img {
   width: 100%;
-  aspect-ratio: 3 / 4;
-  background-color: var(--surface);
-  border: 1px solid var(--border);
   border-radius: var(--radius);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  letter-spacing: 0.1em;
-  /* replace with: <img src="your-photo.jpg" alt="Alex Rivera"> */
+  object-fit: cover;
 }
 
 .about-image-tag {
