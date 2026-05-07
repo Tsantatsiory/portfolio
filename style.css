@@ -101,11 +101,9 @@ header {
 }
 
 .nav-logo {
-  font-family: var(--font-serif);
-  font-size: 1.4rem;
-  font-weight: 900;
-  letter-spacing: 0.05em;
-  color: var(--accent);
+  img{
+    width: 15%;
+  }
 }
 
 .nav-links {
@@ -640,10 +638,9 @@ footer {
 }
 
 .footer-name {
-  font-family: var(--font-serif);
-  font-size: 1rem;
-  font-style: italic;
-  color: var(--text-muted);
+  img{
+    width: 30%;
+  }
 }
 
 .footer-copy {
