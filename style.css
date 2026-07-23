@@ -1,3 +1,9 @@
+/* ============================================
+   PERSONAL PORTFOLIO — styles.css
+   Aesthetic: Dark editorial / refined brutalist
+   ============================================ */
+
+/* ---- CSS VARIABLES (Custom Properties) ---- */
 :root {
   --bg:          #0d0d0d;
   --surface:     #161616;
@@ -5,7 +11,7 @@
   --border:      #2a2a2a;
   --text:        #e8e4dc;
   --text-muted:  #6b6b6b;
-  --accent:      #c8f057;     
+  --accent:      #c8f057;       /* electric lime — the memorable detail */
   --accent-dim:  rgba(200, 240, 87, 0.12);
 
   --font-serif:  'Playfair Display', Georgia, serif;
@@ -17,6 +23,7 @@
   --max-width:   1100px;
 }
 
+/* ---- RESET & BASE ---- */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -35,6 +42,7 @@ body {
   font-weight: 300;
   line-height: 1.7;
   overflow-x: hidden;
+  /* subtle grain texture via SVG data URI */
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
 }
 
@@ -163,6 +171,7 @@ header {
   height: 7px;
   border-radius: 50%;
   background-color: var(--accent);
+  /* pulsing "available" indicator */
   animation: pulse 2s ease-in-out infinite;
 }
 
@@ -394,6 +403,7 @@ img {
   font-size: 0.7rem;
   color: var(--text-muted);
   letter-spacing: 0.1em;
+  /* For large card, stays left; for small, sits at top */
   flex-shrink: 0;
   margin-top: 0.15rem;
 }
@@ -701,9 +711,197 @@ footer {
 }
 
 /* ============================================
-   SPLASH SCREEN
+   DESIGN PORTFOLIO PAGE
    ============================================ */
 
+.nav-links a.active {
+  color: var(--accent);
+}
+.nav-links a.active::after {
+  width: 100%;
+}
+
+/* ---- hero ---- */
+.design-hero {
+  padding-top: 10rem;
+  border-top: none;
+}
+
+.design-hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.6rem, 7vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin: 1rem 0 1.5rem;
+  animation: fadeUp 0.7s ease 0.1s both;
+}
+
+.design-hero-title span {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.design-hero-sub {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  max-width: 520px;
+  animation: fadeUp 0.7s ease 0.25s both;
+}
+
+/* ---- grille de cards ---- */
+.design-projects {
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.design-card--large {
+  grid-column: 1 / -1;
+}
+
+.design-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+.design-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+
+/* header : icone + tags */
+.design-card-top {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.design-card-icon {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: var(--surface-2);
+  border: 1px solid var(--border);
+}
+
+.design-card-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.design-card-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.design-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.design-tags-text {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* image du projet */
+.design-card-image {
+  border-radius: var(--radius);
+  overflow: hidden;
+  background-color: var(--surface-2);
+  aspect-ratio: 16 / 10;
+}
+
+.design-card--large .design-card-image {
+  aspect-ratio: 21 / 9;
+}
+
+.design-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.design-card:hover .design-card-image img {
+  transform: scale(1.04);
+}
+
+/* meta : client / prestation */
+.design-card-meta {
+  display: flex;
+  gap: 2rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+.design-card-meta > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.design-meta-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.design-meta-value {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+/* ---- CTA ---- */
+.design-cta {
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding-top: 5rem;
+  padding-bottom: 7rem;
+}
+
+.design-cta p {
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+.design-cta .submit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media (max-width: 860px) {
+  .design-hero {
+    padding-top: 7rem;
+  }
+  .design-projects {
+    grid-template-columns: 1fr;
+  }
+  .design-card-meta {
+    gap: 1.25rem;
+  }
+}
+
+/* pendant le chargement, on bloque le scroll et on masque le site */
 body.is-loading {
   overflow: hidden;
 }
@@ -725,6 +923,22 @@ body.is-loading footer {
   overflow: hidden;
 }
 
+#splash-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  filter: brightness(0.32) saturate(0.85);
+  transition: opacity 1400ms ease;
+  pointer-events: none;
+}
+
+#splash-video.show {
+  opacity: 1;
+}
+
 #splash-veil {
   position: absolute;
   inset: 0;
@@ -744,8 +958,8 @@ body.is-loading footer {
 
 /* ---- point ---- */
 #splash-dot {
-  width: 10px;
-  height: 10px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background-color: var(--accent);
   box-shadow: 0 0 14px var(--accent-dim), 0 0 24px rgba(200, 240, 87, 0.25);
@@ -817,7 +1031,7 @@ body.is-loading footer {
 
 /* ---- pourcentage ---- */
 #splash-percent {
-  margin-top: 30px;
+  margin-top: 0.4rem;
   font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: 0.06em;
@@ -832,7 +1046,7 @@ body.is-loading footer {
 
 /* ---- barre de chargement ---- */
 #splash-bar-wrap {
-  margin-top: 10px;
+  margin-top: 1.6rem;
   width: 200px;
   height: 1px;
   background-color: var(--border);
@@ -848,7 +1062,7 @@ body.is-loading footer {
   position: absolute;
   left: 0;
   top: 0;
-  height: 200%;
+  height: 100%;
   width: 0%;
   background-color: var(--accent);
   box-shadow: 0 0 8px var(--accent-dim);
@@ -873,12 +1087,58 @@ body.is-loading footer {
   to { opacity: 0; transform: translateY(-20px) scale(0.98); }
 }
 
+/* ---- toggle son ---- */
+#splash-sound-toggle {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 3;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background-color: rgba(22, 22, 22, 0.6);
+  backdrop-filter: blur(6px);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity var(--transition), border-color var(--transition), color var(--transition);
+}
+
+#splash-sound-toggle.in {
+  animation: splashFadeIn 600ms ease 400ms forwards;
+}
+
+#splash-sound-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+#splash-sound-toggle.playing {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+@media (max-width: 540px) {
+  #splash-sound-toggle {
+    bottom: 1.25rem;
+    right: 1.25rem;
+    width: 34px;
+    height: 34px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   #splash-dot.rise,
   #splash-name.in,
   #splash-status.in,
   #splash-percent.in,
   #splash-bar-wrap.in,
+  #splash-sound-toggle.in,
   #splash.exit,
   #splash.exit #splash-content {
     animation-duration: 1ms !important;
