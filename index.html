@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tsanta Tsiory — Developer & Designer</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
   <link href="style.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
 </head>
-<body>
+
+<body class="is-loading">
+
+  <!-- ============ SPLASH SCREEN ============ -->
+  <div id="splash">
+    
+    <div id="splash-veil"></div>
+
+    <div id="splash-content">
+      <div id="splash-dot"></div>
+      <h1 id="splash-name">Tsanta <span>Tsiory</span></h1>
+      <div id="splash-status"><span id="splash-status-word">Initializing</span></div>
+      <div id="splash-percent">0%</div>
+      <div id="splash-bar-wrap">
+        <div id="splash-bar-fill"></div>
+      </div>
+    </div>
+  </div>
 
   <!-- HEADER / NAV -->
   <header>
@@ -51,10 +71,13 @@
         <div class="about-text">
           <h2 class="section-heading">A developer with an obsession for detail.</h2>
           <p>
-            Hi, I'm Tsanta — a full-stack developer and occasional designer and photographer based in Mauritius. I've spent the last three years building web applications that live at the intersection of engineering rigor and thoughtful design.
+            Hi, I'm Tsanta — a full-stack developer and occasional designer and photographer based in Mauritius. I've
+            spent the last three years building web applications that live at the intersection of engineering rigor and
+            thoughtful design.
           </p>
           <p>
-            I care deeply about the craft: clean architecture, accessible interfaces, and experiences that don't just function but genuinely delight. When I'm not writing code, you'll find me doing photo shoots or drawing art.
+            I care deeply about the craft: clean architecture, accessible interfaces, and experiences that don't just
+            function but genuinely delight. When I'm not writing code, you'll find me doing photo shoots or drawing art.
           </p>
           <div class="skills-row">
             <span class="skill-tag">JavaScript</span>
@@ -80,7 +103,8 @@
           <div class="project-content">
             <span class="project-tag">Full-Stack App</span>
             <h3 class="project-title">Chronicle</h3>
-            <p class="project-desc">A personal journaling platform with AI-powered mood analysis, end-to-end encryption, and beautiful data visualizations of your emotional journey over time.</p>
+            <p class="project-desc">A personal journaling platform with AI-powered mood analysis, end-to-end encryption,
+              and beautiful data visualizations of your emotional journey over time.</p>
             <div class="project-links">
               <a href="#" class="project-link">Source Code <i class="bi bi-arrow-up-right"></i></a>
               <a href="#" class="project-link project-link--primary">Live Demo <i class="bi bi-arrow-up-right"></i></a>
@@ -96,7 +120,8 @@
           <div class="project-content">
             <span class="project-tag">CLI Tool</span>
             <h3 class="project-title">Quickframe</h3>
-            <p class="project-desc">An opinionated project scaffolding CLI that sets up a full-stack environment in under 30 seconds, with pre-configured linting, testing, and CI/CD.</p>
+            <p class="project-desc">An opinionated project scaffolding CLI that sets up a full-stack environment in
+              under 30 seconds, with pre-configured linting, testing, and CI/CD.</p>
             <div class="project-links">
               <a href="#" class="project-link">Source Code <i class="bi bi-arrow-up-right"></i></a>
             </div>
@@ -111,10 +136,12 @@
           <div class="project-content">
             <span class="project-tag">Browser Extension</span>
             <h3 class="project-title">FocusFrame</h3>
-            <p class="project-desc">A Chrome extension that replaces the new tab page with a minimal focus dashboard — Pomodoro timer, daily intentions, and a distraction blocker built in.</p>
+            <p class="project-desc">A Chrome extension that replaces the new tab page with a minimal focus dashboard —
+              Pomodoro timer, daily intentions, and a distraction blocker built in.</p>
             <div class="project-links">
               <a href="#" class="project-link">Source Code <i class="bi bi-arrow-up-right"></i></a>
-              <a href="#" class="project-link project-link--primary">Chrome Store <i class="bi bi-arrow-up-right"></i></a>
+              <a href="#" class="project-link project-link--primary">Chrome Store <i
+                  class="bi bi-arrow-up-right"></i></a>
             </div>
           </div>
           <div class="project-stack">
@@ -127,7 +154,8 @@
           <div class="project-content">
             <span class="project-tag">Data Visualization</span>
             <h3 class="project-title">CityPulse</h3>
-            <p class="project-desc">An interactive map visualizing real-time public transit delays, air quality, and pedestrian foot-traffic across major US cities using open data APIs.</p>
+            <p class="project-desc">An interactive map visualizing real-time public transit delays, air quality, and
+              pedestrian foot-traffic across major US cities using open data APIs.</p>
             <div class="project-links">
               <a href="#" class="project-link">Source Code <i class="bi bi-arrow-up-right"></i></a>
               <a href="#" class="project-link project-link--primary">Live Demo <i class="bi bi-arrow-up-right"></i></a>
@@ -146,7 +174,8 @@
       <div class="section-label">— 03 / Contact</div>
       <div class="contact-inner">
         <h2 class="section-heading contact-heading">Let's make something great.</h2>
-        <p class="contact-sub">Whether you have a project in mind or just want to say hello — my inbox is always open.</p>
+        <p class="contact-sub">Whether you have a project in mind or just want to say hello — my inbox is always open.
+        </p>
 
         <form class="contact-form">
           <div class="form-row">
@@ -161,7 +190,8 @@
           </div>
           <div class="form-group">
             <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project…" required></textarea>
+            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project…"
+              required></textarea>
           </div>
           <button type="submit" class="submit-btn">Send Message <i class="bi bi-arrow-up-right"></i></button>
         </form>
@@ -187,5 +217,8 @@
     </div>
   </footer>
 
+  <script src="script.js"></script>
+
 </body>
+
 </html>
