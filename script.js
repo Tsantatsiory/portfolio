@@ -11,7 +11,6 @@
 
     if (!splash) return;
 
-    // Personnalise ces messages si tu veux
     const messages = [
         'Initializing...',
         'Connexion...',
@@ -22,9 +21,9 @@
         'Starting now...',
     ];
 
-    const DOT_RISE_DELAY = 600;   // ms avant que le point commence à monter
+    const DOT_RISE_DELAY = 600;
     const DOT_RISE_DURATION = 900;
-    const LOAD_DURATION = 8000;   // ms pour atteindre 100%
+    const LOAD_DURATION = 8000;
 
     // 1. le point monte
     setTimeout(() => dot.classList.add('rise'), DOT_RISE_DELAY);
