@@ -13,11 +13,13 @@
 
     const messages = [
         'Initializing...',
-        'Connexion...',
-        'Préparation des données...',
-        'Chargement des ressources...',
-        'Optimisation...',
-        'Finalisation...',
+        'Connecting ideas...',
+        'collecting data...',
+        'Loading experience...',
+        'Rendering content...',
+        'Synchronizing modules...',
+        'Building memories...',
+        'Finalizing setup...',
         'Starting now...',
     ];
 
