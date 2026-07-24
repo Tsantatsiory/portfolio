@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Gallery — Tsanta Tsiory</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <link href="style.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- HEADER / NAV -->
+  <header>
+    <nav class="nav">
+      <a href="index.html" class="nav-logo"><img src="img/mini.png" alt="Tsanta Tsiory"></a>
+      <ul class="nav-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#projects">Work</a></li>
+        <li class="nav-dropdown">
+          <button class="nav-dropdown-trigger active" type="button" aria-haspopup="true" aria-expanded="false">
+            Creations <i class="bi bi-chevron-down"></i>
+          </button>
+          <ul class="nav-dropdown-menu">
+            <li><a href="design.html"><i class="bi bi-palette"></i> Design</a></li>
+            <li><a href="gallery.html" class="active"><i class="bi bi-images"></i> Gallery</a></li>
+            <!-- ajoute tes futures pages ici -->
+          </ul>
+        </li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- GALLERY HERO -->
+    <section class="gallery-hero">
+      <div class="section-label">— Photo Gallery</div>
+      <h1 class="gallery-hero-title">Captured<br>instants<span>.</span></h1>
+      <p class="gallery-hero-sub">A collection of photos taken here and there — portraits, street, nature. Click on an image to enlarge it.</p>
+
+      <div class="gallery-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="portrait">Portrait</button>
+        <button class="filter-btn" data-filter="street">Street</button>
+        <button class="filter-btn" data-filter="nature">Nature</button>
+      </div>
+    </section>
+
+    <!-- MASONRY GRID -->
+    <section class="gallery-section">
+      <div class="masonry" id="masonry">
+
+        <figure class="masonry-item" data-cat="nature">
+          <img src="img/gallery/nature.jpg" alt="nature" loading="lazy">
+          <figcaption>
+            <span class="masonry-tag">nature</span>
+          </figcaption>
+        </figure>
+
+        <figure class="masonry-item" data-cat="nature">
+          <img src="img/gallery/nature1.jpg" alt="nature" loading="lazy">
+          <figcaption>
+            <span class="masonry-tag">nature</span>
+          </figcaption>
+        </figure>
+
+        <figure class="masonry-item" data-cat="nature">
+          <img src="img/gallery/nature2.jpg" alt="Nature" loading="lazy">
+          <figcaption>
+            <span class="masonry-tag">nature</span>
+          </figcaption>
+        </figure>
+
+        <figure class="masonry-item" data-cat="portrait">
+          <img src="img/gallery/portrait.jpg" alt="Portrait" loading="lazy">
+          <figcaption>
+            <span class="masonry-tag">Portrait</span>
+          </figcaption>
+        </figure>
+
+        <figure class="masonry-item" data-cat="portrait">
+          <img src="img/gallery/portrait1.jpg" alt="Portrait" loading="lazy">
+          <figcaption>
+            <span class="masonry-tag">Portrait</span>
+          </figcaption>
+        </figure>
+
+        <figure class="masonry-item" data-cat="street">
+          <img src="img/gallery/car.jpg" alt="Street photography" loading="lazy">
+          <figcaption>
+            <span class="masonry-tag">Street</span>
+          </figcaption>
+        </figure>
+
+        <figure class="masonry-item" data-cat="street">
+          <img src="img/gallery/car1.jpg" alt="Street photography" loading="lazy">
+          <figcaption>
+            <span class="masonry-tag">Street</span>
+          </figcaption>
+        </figure>
+
+        <figure class="masonry-item" data-cat="street">
+          <img src="img/gallery/car2.jpg" alt="Street photography" loading="lazy">
+          <figcaption>
+            <span class="masonry-tag">Street</span>
+          </figcaption>
+        </figure>
+
+        <figure class="masonry-item" data-cat="street">
+          <img src="img/gallery/car3.jpg" alt="Street photography" loading="lazy">
+          <figcaption>
+            <span class="masonry-tag">Street</span>
+          </figcaption>
+        </figure>
+
+        <figure class="masonry-item" data-cat="street">
+          <img src="img/gallery/car4.jpg" alt="Street photography" loading="lazy">
+          <figcaption>
+            <span class="masonry-tag">Street</span>
+          </figcaption>
+        </figure>
+
+        <figure class="masonry-item" data-cat="street">
+          <img src="img/gallery/car5.jpg" alt="Street photography" loading="lazy">
+          <figcaption>
+            <span class="masonry-tag">Street</span>
+          </figcaption>
+        </figure>
+
+        <figure class="masonry-item" data-cat="street">
+          <img src="img/gallery/car6.jpg" alt="Street photography" loading="lazy">
+          <figcaption>
+            <span class="masonry-tag">Street</span>
+          </figcaption>
+        </figure>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous"><i class="bi bi-chevron-left"></i></button>
+    <img src="" alt="" id="lightbox-img">
+    <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next"><i class="bi bi-chevron-right"></i></button>
+    <div class="lightbox-counter" id="lightbox-counter"></div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-name"><img src="img/horizantal.png" alt=""></span>
+      <span class="footer-copy">© 2026 · Designed & built with care</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

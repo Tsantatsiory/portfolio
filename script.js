@@ -10,6 +10,15 @@
     const barFill = document.getElementById('splash-bar-fill');
 
     if (!splash) return;
+    
+    const SPLASH_SEEN_KEY = 'splashSeen';
+
+    if (sessionStorage.getItem(SPLASH_SEEN_KEY)) {
+        splash.style.display = 'none';
+        body.classList.remove('is-loading');
+        return;
+    }
+    sessionStorage.setItem(SPLASH_SEEN_KEY, 'true');
 
     const messages = [
         'Initializing...',
@@ -86,4 +95,31 @@
             body.classList.remove('is-loading');
         }, 900);
     }
+
+    const dropdown = document.querySelector('.nav-dropdown');
+    if (!dropdown) return;
+
+    const trigger = dropdown.querySelector('.nav-dropdown-trigger');
+
+    trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = dropdown.classList.toggle('open');
+        trigger.setAttribute('aria-expanded', isOpen);
+    });
+
+    // ferme le dropdown si on clique ailleurs sur la page
+    document.addEventListener('click', (e) => {
+        if (!dropdown.contains(e.target)) {
+            dropdown.classList.remove('open');
+            trigger.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    // ferme au clic sur un lien du menu
+    dropdown.querySelectorAll('.nav-dropdown-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            dropdown.classList.remove('open');
+            trigger.setAttribute('aria-expanded', 'false');
+        });
+    });
 })();
