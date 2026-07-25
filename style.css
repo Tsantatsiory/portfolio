@@ -161,12 +161,9 @@ header {
 
 .dot {
   display: inline-block;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background-color: var(--accent);
-  /* pulsing "available" indicator */
   animation: pulse 2s ease-in-out infinite;
+  font-size: 1.25rem;
+  color: var(--accent);
 }
 
 @keyframes pulse {
