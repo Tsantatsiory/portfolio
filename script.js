@@ -10,14 +10,18 @@
     const barFill = document.getElementById('splash-bar-fill');
 
     if (!splash) return;
-    
+
     const SPLASH_SEEN_KEY = 'splashSeen';
 
     if (sessionStorage.getItem(SPLASH_SEEN_KEY)) {
         splash.style.display = 'none';
         body.classList.remove('is-loading');
-        // Initialiser les révélations même si le splash est skip
-        initScrollReveal();
+        const hero = document.querySelector('.hero');
+        if (hero) {
+            hero.classList.add('hero-visible');
+            setTimeout(() => startHeroAnimations(), 400);
+        }
+        setTimeout(() => initScrollReveal(), 600);
         return;
     }
     sessionStorage.setItem(SPLASH_SEEN_KEY, 'true');
@@ -25,7 +29,7 @@
     const messages = [
         'Initializing...',
         'Connecting ideas...',
-        'collecting data...',
+        'Collecting data...',
         'Loading experience...',
         'Rendering content...',
         'Synchronizing modules...',
@@ -38,15 +42,12 @@
     const DOT_RISE_DURATION = 900;
     const LOAD_DURATION = 8000;
 
-    // 1. le point monte
     setTimeout(() => dot.classList.add('rise'), DOT_RISE_DELAY);
 
-    // 2. le nom + la vidéo apparaissent
     setTimeout(() => {
         name.classList.add('in');
     }, DOT_RISE_DELAY + DOT_RISE_DURATION - 150);
 
-    // 3-4-5. statut, %, barre apparaissent puis progressent ensemble
     setTimeout(() => {
         status.classList.add('in');
         percentEl.classList.add('in');
@@ -89,15 +90,56 @@
         }, stepTime);
     }
 
-    // 6. sortie du splash -> révèle le vrai site
     function finishLoading() {
         splash.classList.add('exit');
+        
         setTimeout(() => {
             splash.style.display = 'none';
             body.classList.remove('is-loading');
-            // Initialiser le scroll reveal après le splash
-            initScrollReveal();
-        }, 900);
+            
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.classList.add('hero-visible');
+            }
+            setTimeout(() => {
+                startHeroAnimations();
+                initScrollReveal();
+            }, 400);
+        }, 900); 
+    }
+
+    // ============================================
+    // HERO ANIMATIONS - gestion des délais en cascade
+    // ============================================
+    function startHeroAnimations() {
+        const hero = document.querySelector('.hero');
+        if (!hero) return;
+
+        const heroCategory = hero.querySelector('.hero-category');
+        const heroTitle = hero.querySelector('.hero-title');
+        const heroSub = hero.querySelector('.hero-sub');
+        const heroScrollHint = hero.querySelector('.hero-scroll-hint');
+        const heroBg = hero.querySelector('.hero-bg-word');
+
+        if (heroCategory) {
+            setTimeout(() => heroCategory.classList.add('animate-in'), 150);
+        }
+
+        if (heroBg) {
+            setTimeout(() => heroBg.classList.add('animate-in'), 300);
+        }
+
+        if (heroTitle) {
+            setTimeout(() => heroTitle.classList.add('animate-in'), 400);
+        }
+
+        if (heroSub) {
+            setTimeout(() => heroSub.classList.add('animate-in'), 650);
+        }
+
+        if (heroScrollHint) {
+            setTimeout(() => heroScrollHint.classList.add('animate-in'), 850);
+        }
     }
 
     // ============================================
@@ -133,7 +175,7 @@
     // ============================================
     function initScrollReveal() {
         const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
-        
+
         if (revealElements.length === 0) return;
 
         const observer = new IntersectionObserver((entries) => {
@@ -150,7 +192,6 @@
 
         revealElements.forEach(el => observer.observe(el));
 
-        // Si certains éléments sont déjà visibles (pas de scroll)
         setTimeout(() => {
             revealElements.forEach(el => {
                 const rect = el.getBoundingClientRect();
@@ -159,11 +200,15 @@
                     el.classList.add('visible');
                 }
             });
-        }, 300);
+        }, 600);
     }
 
-    // Si le splash est déjà passé (pas de splash au chargement), init direct
     if (!splash.style.display || splash.style.display === 'none') {
-        initScrollReveal();
+        const hero = document.querySelector('.hero');
+        if (hero) {
+            hero.classList.add('hero-visible');
+            setTimeout(() => startHeroAnimations(), 400);
+        }
+        setTimeout(() => initScrollReveal(), 600);
     }
 })();
