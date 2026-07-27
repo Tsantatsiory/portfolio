@@ -16,6 +16,8 @@
     if (sessionStorage.getItem(SPLASH_SEEN_KEY)) {
         splash.style.display = 'none';
         body.classList.remove('is-loading');
+        // Initialiser les révélations même si le splash est skip
+        initScrollReveal();
         return;
     }
     sessionStorage.setItem(SPLASH_SEEN_KEY, 'true');
@@ -93,33 +95,75 @@
         setTimeout(() => {
             splash.style.display = 'none';
             body.classList.remove('is-loading');
+            // Initialiser le scroll reveal après le splash
+            initScrollReveal();
         }, 900);
     }
 
+    // ============================================
+    // DROPDOWN
+    // ============================================
     const dropdown = document.querySelector('.nav-dropdown');
-    if (!dropdown) return;
+    if (dropdown) {
+        const trigger = dropdown.querySelector('.nav-dropdown-trigger');
 
-    const trigger = dropdown.querySelector('.nav-dropdown-trigger');
-
-    trigger.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const isOpen = dropdown.classList.toggle('open');
-        trigger.setAttribute('aria-expanded', isOpen);
-    });
-
-    // ferme le dropdown si on clique ailleurs sur la page
-    document.addEventListener('click', (e) => {
-        if (!dropdown.contains(e.target)) {
-            dropdown.classList.remove('open');
-            trigger.setAttribute('aria-expanded', 'false');
-        }
-    });
-
-    // ferme au clic sur un lien du menu
-    dropdown.querySelectorAll('.nav-dropdown-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-            dropdown.classList.remove('open');
-            trigger.setAttribute('aria-expanded', 'false');
+        trigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = dropdown.classList.toggle('open');
+            trigger.setAttribute('aria-expanded', isOpen);
         });
-    });
+
+        document.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('open');
+                trigger.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        dropdown.querySelectorAll('.nav-dropdown-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                dropdown.classList.remove('open');
+                trigger.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
+
+    // ============================================
+    // SCROLL REVEAL
+    // ============================================
+    function initScrollReveal() {
+        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+        
+        if (revealElements.length === 0) return;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            root: null,
+            rootMargin: '0px 0px -50px 0px',
+            threshold: 0.1
+        });
+
+        revealElements.forEach(el => observer.observe(el));
+
+        // Si certains éléments sont déjà visibles (pas de scroll)
+        setTimeout(() => {
+            revealElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                const winHeight = window.innerHeight;
+                if (rect.top < winHeight - 100) {
+                    el.classList.add('visible');
+                }
+            });
+        }, 300);
+    }
+
+    // Si le splash est déjà passé (pas de splash au chargement), init direct
+    if (!splash.style.display || splash.style.display === 'none') {
+        initScrollReveal();
+    }
 })();
