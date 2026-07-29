@@ -12,8 +12,9 @@
     if (!splash) return;
 
     const SPLASH_SEEN_KEY = 'splashSeen';
+    const splashAlreadySeen = !!sessionStorage.getItem(SPLASH_SEEN_KEY);
 
-    if (sessionStorage.getItem(SPLASH_SEEN_KEY)) {
+    if (splashAlreadySeen) {
         splash.style.display = 'none';
         body.classList.remove('is-loading');
         const hero = document.querySelector('.hero');
@@ -22,9 +23,9 @@
             setTimeout(() => startHeroAnimations(), 400);
         }
         setTimeout(() => initScrollReveal(), 600);
-        return;
+    } else {
+        sessionStorage.setItem(SPLASH_SEEN_KEY, 'true');
     }
-    sessionStorage.setItem(SPLASH_SEEN_KEY, 'true');
 
     const messages = [
         'Initializing...',
@@ -42,18 +43,20 @@
     const DOT_RISE_DURATION = 900;
     const LOAD_DURATION = 8000;
 
-    setTimeout(() => dot.classList.add('rise'), DOT_RISE_DELAY);
+    if (!splashAlreadySeen) {
+        setTimeout(() => dot.classList.add('rise'), DOT_RISE_DELAY);
 
-    setTimeout(() => {
-        name.classList.add('in');
-    }, DOT_RISE_DELAY + DOT_RISE_DURATION - 150);
+        setTimeout(() => {
+            name.classList.add('in');
+        }, DOT_RISE_DELAY + DOT_RISE_DURATION - 150);
 
-    setTimeout(() => {
-        status.classList.add('in');
-        percentEl.classList.add('in');
-        barWrap.classList.add('in');
-        startLoading();
-    }, DOT_RISE_DELAY + DOT_RISE_DURATION);
+        setTimeout(() => {
+            status.classList.add('in');
+            percentEl.classList.add('in');
+            barWrap.classList.add('in');
+            startLoading();
+        }, DOT_RISE_DELAY + DOT_RISE_DURATION);
+    }
 
     function startLoading() {
         let progress = 0;
@@ -92,11 +95,11 @@
 
     function finishLoading() {
         splash.classList.add('exit');
-        
+
         setTimeout(() => {
             splash.style.display = 'none';
             body.classList.remove('is-loading');
-            
+
             const hero = document.querySelector('.hero');
             if (hero) {
                 hero.classList.add('hero-visible');
@@ -105,7 +108,7 @@
                 startHeroAnimations();
                 initScrollReveal();
             }, 400);
-        }, 900); 
+        }, 900);
     }
 
     // ============================================
@@ -360,6 +363,54 @@
             });
         });
     }
+
+    // ============================================
+    // CONTACT FORM — envoi AJAX via Web3Forms
+    // ============================================
+    (function initContactForm() {
+        const form = document.getElementById('contactForm');
+        if (!form) return;
+
+        const submitBtn = document.getElementById('contactSubmitBtn');
+        const statusEl = document.getElementById('formStatus');
+
+        function showStatus(type, message) {
+            statusEl.className = 'form-status show ' + type;
+            const icon = type === 'success' ? 'bi-check-circle-fill' : 'bi-exclamation-triangle-fill';
+            statusEl.innerHTML = '<i class="bi ' + icon + '"></i> ' + message;
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            submitBtn.classList.add('is-loading');
+            statusEl.className = 'form-status';
+
+            const formData = new FormData(form);
+            const payload = Object.fromEntries(formData.entries());
+
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showStatus('success', 'Message sent — I\'ll get back to you soon.');
+                    form.reset();
+                } else {
+                    showStatus('error', 'Something went wrong. Please try again or email me directly.');
+                }
+            } catch (err) {
+                showStatus('error', 'Network error. Please check your connection and try again.');
+            } finally {
+                submitBtn.classList.remove('is-loading');
+            }
+        });
+    })();
 
     // ============================================
     // SCROLL REVEAL

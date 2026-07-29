@@ -821,6 +821,77 @@ textarea {
 }
 
 /* ============================================
+   CONTACT FORM — Web3Forms (envoi AJAX)
+   ============================================ */
+
+.submit-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+}
+
+.submit-btn-loading {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.submit-btn-loading i {
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.submit-btn.is-loading .submit-btn-text {
+  display: none;
+}
+
+.submit-btn.is-loading .submit-btn-loading {
+  display: inline-flex;
+}
+
+.submit-btn.is-loading {
+  opacity: 0.85;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-status {
+  margin-top: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.4s ease;
+}
+
+.form-status.show {
+  max-height: 80px;
+  opacity: 1;
+}
+
+.form-status.success {
+  color: var(--accent);
+}
+
+.form-status.error {
+  color: #ff6b6b;
+}
+
+.form-status i {
+  font-size: 1rem;
+}
+
+/* ============================================
    FOOTER
    ============================================ */
 footer {
@@ -1659,8 +1730,53 @@ body.is-loading footer {
 }
 
 @media (max-width: 540px) {
+  /* style Pinterest mobile : on garde 2 colonnes, juste plus serrées */
   .masonry {
-    column-count: 1;
+    column-count: 2;
+    column-gap: 0.5rem;
+  }
+
+  .masonry-item {
+    margin-bottom: 0.5rem;
+    border-radius: 10px;
+  }
+
+  .gallery-section {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .gallery-hero,
+  .gallery-section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .masonry-tag {
+    font-size: 0.58rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .masonry-item figcaption {
+    left: 0.5rem;
+    bottom: 0.5rem;
+    opacity: 1; /* pas de hover au tactile, donc toujours visible sur mobile */
+  }
+
+  .gallery-filters {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .filter-btn {
+    font-size: 0.65rem;
+    padding: 0.4rem 0.85rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .masonry {
+    column-gap: 0.4rem;
   }
 }
 
@@ -2053,4 +2169,74 @@ body.is-loading footer {
   .bottom-nav-icon {
     transition-duration: 1ms !important;
   }
+}
+/* ============================================
+   CONTACT FORM — Web3Forms (envoi AJAX)
+   ============================================ */
+
+.submit-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+}
+
+.submit-btn-loading {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.submit-btn-loading i {
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.submit-btn.is-loading .submit-btn-text {
+  display: none;
+}
+
+.submit-btn.is-loading .submit-btn-loading {
+  display: inline-flex;
+}
+
+.submit-btn.is-loading {
+  opacity: 0.85;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-status {
+  margin-top: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.4s ease;
+}
+
+.form-status.show {
+  max-height: 80px;
+  opacity: 1;
+}
+
+.form-status.success {
+  color: var(--accent);
+}
+
+.form-status.error {
+  color: #ff6b6b;
+}
+
+.form-status i {
+  font-size: 1rem;
 }

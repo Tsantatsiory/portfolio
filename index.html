@@ -194,7 +194,11 @@
           inbox is always open.
         </p>
 
-        <form class="contact-form reveal-scale reveal-delay-4">
+        <form class="contact-form reveal-scale reveal-delay-4" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="2b082ff4-785d-4318-8491-5010fde6a13c">
+          <input type="hidden" name="subject" value="Nouveau message depuis le portfolio">
+          <input type="hidden" name="botcheck" autocomplete="off">
+
           <div class="form-row">
             <div class="form-group">
               <label for="name">Name</label>
@@ -210,15 +214,22 @@
             <textarea id="message" name="message" rows="5" placeholder="Tell me about your project…"
               required></textarea>
           </div>
-          <button type="submit" class="submit-btn">Send Message <i class="bi bi-arrow-up-right"></i></button>
+          <button type="submit" class="submit-btn" id="contactSubmitBtn">
+            <span class="submit-btn-text">Send Message <i class="bi bi-arrow-up-right"></i></span>
+            <span class="submit-btn-loading"><i class="bi bi-arrow-repeat"></i> Sending...</span>
+          </button>
+
+          <div class="form-status" id="formStatus"></div>
         </form>
 
         <div class="contact-links reveal reveal-delay-5">
           <a href="https://github.com/Tsantatsiory" class="social-link" target="_blank" rel="noopener">GitHub</a>
           <span class="divider">·</span>
-          <a href="https://www.linkedin.com/in/tsanta-tsiory" class="social-link" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://www.linkedin.com/in/tsanta-tsiory" class="social-link" target="_blank"
+            rel="noopener">LinkedIn</a>
           <span class="divider">·</span>
-          <a href="https://www.instagram.com/tsanta_tsiory" class="social-link" target="_blank" rel="noopener">instagram</a>
+          <a href="https://www.instagram.com/tsanta_tsiory" class="social-link" target="_blank"
+            rel="noopener">instagram</a>
           <span class="divider">·</span>
           <!--<a href="" class="social-link">View my CV</a>-->
         </div>
