@@ -949,6 +949,10 @@ footer {
   padding: 1.5rem 1.5rem;
   }
 
+  .hero .hero-bg-word.animate-in {
+  font-size: 3rem;
+  }
+
   .contact-form {
   margin-bottom: 1rem;
   } 
