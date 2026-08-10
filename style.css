@@ -1917,7 +1917,7 @@ body.is-loading footer {
 .hero .hero-title.animate-in {
   opacity: 1;
   transform: translateY(0) scale(1);
-  text-shadow: 0 0 60px rgba(200, 240, 87, 0.3);
+  text-shadow: 0 0 60px rgba(31, 46, 255, 0.3);
 }
 
 .hero .hero-sub.animate-in {
