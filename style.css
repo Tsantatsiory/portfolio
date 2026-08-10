@@ -770,7 +770,7 @@ textarea {
   background-color: transparent;
   color: var(--accent);
   transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(200, 240, 87, 0.15);
+  box-shadow: 0 4px 20px rgba(89, 87, 240, 0.15);
 }
 
 .contact-links {
