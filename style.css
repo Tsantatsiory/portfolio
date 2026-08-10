@@ -911,8 +911,7 @@ footer {
 
   .nav-logo {
     img {
-      width: 10%;
-      transform: translateX(9rem);
+      transform: translateX(6rem);
     }
   }
 
