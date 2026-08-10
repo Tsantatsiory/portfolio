@@ -6,7 +6,7 @@
   --text: #e8e4dc;
   --text-muted: #6b6b6b;
   --accent: #1F2EFF;
-  --accent-dim: rgba(200, 240, 87, 0.12);
+  --accent-dim: #5f57f01f;
 
   --font-serif: 'Ubuntu', sans-serif;
   --font-mono: 'DM Mono', 'Courier New', monospace;
@@ -398,30 +398,6 @@ header {
   transform: translateY(0);
 }
 
-.hero-line {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.hero-line path {
-  stroke: var(--accent);
-  stroke-width: 3;
-  filter: drop-shadow(0 0 15px rgba(31, 46, 255, .45));
-  fill: none;
-  
-  stroke-dasharray: 2800;
-  stroke-dashoffset: 2800;
-  
-  transition: stroke-dashoffset 3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.hero.hero-visible .hero-line path {
-  stroke-dashoffset: 0;
-}
 
 body.is-loading .hero {
   opacity: 0 !important;
@@ -522,7 +498,7 @@ img {
 
 .skill-tag:hover {
   border-color: var(--accent);
-  color: var(--accent);
+  color: var(--text);
   transform: scale(1.05) translateY(-2px);
 }
 
@@ -664,6 +640,7 @@ img {
 }
 
 .project-stack {
+  cursor: pointer;
   display: flex;
   gap: 0.5rem;
   align-items: flex-end;
@@ -683,7 +660,7 @@ img {
 }
 
 .project-stack span:hover {
-  color: var(--accent);
+  color: var(--text);
   background-color: var(--accent-dim);
   transform: translateY(-2px);
 }
@@ -1495,7 +1472,6 @@ body.is-loading footer {
 
 .gallery-hero-title span {
   color: var(--accent);
-  font-family: 'Courier New', Courier, monospace;
 }
 
 .gallery-hero-sub {
@@ -1529,8 +1505,8 @@ body.is-loading footer {
 
 .filter-btn:hover {
   border-color: var(--accent);
-  color: var(--accent);
-  transform: translateY(-2px);
+  color: var(--text);
+  transform: translateY(-2px);  
 }
 
 .filter-btn.active {
@@ -1978,12 +1954,6 @@ body.is-loading footer {
 .hero .hero-bg-word {
   transition-delay: 0s;
   transition: opacity 1.2s ease, transform 1.2s ease;
-}
-
-.hero-line path {
-  stroke-dasharray: 2500;
-  stroke-dashoffset: 2500;
-  transition: stroke-dashoffset 2.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 body.is-loading .hero {
