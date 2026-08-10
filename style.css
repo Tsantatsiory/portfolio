@@ -5,7 +5,7 @@
   --border: #2a2a2a;
   --text: #e8e4dc;
   --text-muted: #6b6b6b;
-  --accent: #c8f057;
+  --accent: #1F2EFF;
   --accent-dim: rgba(200, 240, 87, 0.12);
 
   --font-serif: 'Ubuntu', sans-serif;
@@ -284,7 +284,7 @@ header {
   inset: 0;
   background:
     radial-gradient(circle at center,
-      rgba(200, 240, 87, .18),
+      rgba(31, 46, 255, .18),
       transparent 35%);
   opacity: 0;
   transition: opacity 1.5s ease;
@@ -329,7 +329,7 @@ header {
   font-size: .8rem;
   letter-spacing: .35em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--text);
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
@@ -374,7 +374,7 @@ header {
 .hero-title.animate-in {
   opacity: 1;
   transform: translateY(0) scale(1);
-  text-shadow: 0 0 60px rgba(200, 240, 87, 0.3);
+  text-shadow: 0 0 60px rgba(31, 46, 255, 0.3);
 }
 
 .hero-title span {
@@ -410,7 +410,7 @@ header {
 .hero-line path {
   stroke: var(--accent);
   stroke-width: 3;
-  filter: drop-shadow(0 0 15px rgba(200, 240, 87, .45));
+  filter: drop-shadow(0 0 15px rgba(31, 46, 255, .45));
   fill: none;
   
   stroke-dasharray: 2800;
@@ -484,7 +484,7 @@ img {
   bottom: -1rem;
   right: -1rem;
   background-color: var(--accent);
-  color: var(--bg);
+  color: var(--text);
   font-family: var(--font-mono);
   font-size: 0.7rem;
   font-weight: 500;
@@ -569,7 +569,7 @@ img {
 .project-card:hover {
   border-color: var(--accent);
   transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(200, 240, 87, 0.06);
+  box-shadow: 0 8px 30px rgba(31, 46, 255, 0.06);
 }
 
 .project-card::before {
@@ -652,7 +652,7 @@ img {
 
 .project-link--primary {
   background-color: var(--accent);
-  color: var(--bg);
+  color: var(--text);
   border-color: var(--accent);
   font-weight: 500;
 }
@@ -777,7 +777,7 @@ textarea {
 .submit-btn {
   align-self: flex-start;
   background-color: var(--accent);
-  color: var(--bg);
+  color: var(--text);
   border: 2px solid var(--accent);
   border-radius: var(--radius);
   font-family: var(--font-mono);
