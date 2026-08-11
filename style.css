@@ -1362,7 +1362,7 @@ body.is-loading footer {
   top: 0;
   height: 100%;
   width: 0%;
-  background-color: var(--accent);
+  background-color: var(--text);
   box-shadow: 0 0 8px var(--accent-dim);
   transition: width 160ms linear;
 }
