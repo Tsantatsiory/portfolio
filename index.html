@@ -100,10 +100,6 @@
             spent the last three years building web applications that live at the intersection of engineering rigor and
             thoughtful design.
           </p>
-          <p>
-            I care deeply about the craft: clean architecture, accessible interfaces, and experiences that don't just
-            function but genuinely delight. When I'm not writing code, you'll find me doing photo shoots or drawing art.
-          </p>
           <div class="skills-row">
             <span class="skill-tag">JavaScript</span>
             <span class="skill-tag">SQL</span>
@@ -112,8 +108,34 @@
             <span class="skill-tag">Illustrator</span>
             <span class="skill-tag">5+</span>
           </div>
-        </div>
-      </div>
+          <div class="container">
+            <!-- Barre de progression -->
+            <div class="progress-wrapper">
+              <div class="progress-bar-bg">
+                <div class="progress-fill" id="progressFill"></div>
+              </div>
+              <div class="progress-label">
+                <span id="progressText">0%</span>
+                <span>langue</span>
+                <span>100%</span>
+              </div>
+            </div>
+
+            <!-- Language Tags (exactement ton code) -->
+            <div class="language">
+              <span class="language-tag" data-value="67">English</span>
+              <span class="language-tag" data-value="95">French</span>
+              <span class="language-tag" data-value="99">Malagasy</span>
+            </div>
+
+            <!-- Indicateur de progression par points -->
+            <div class="step-indicator" id="stepIndicator">
+              <span class="step-dot" data-index="0"></span>
+              <span class="step-dot" data-index="1"></span>
+              <span class="step-dot" data-index="2"></span>
+            </div>
+          </div>
+
     </section>
 
     <!-- PROJECTS -->
@@ -181,9 +203,11 @@
           <div class="project-content">
             <span class="project-tag">System Application</span>
             <h3 class="project-title">Quizz Masina</h3>
-            <p class="project-desc">A simple quiz application built with modern web technologies. To use with your friends for fun</p>
+            <p class="project-desc">A simple quiz application built with modern web technologies. To use with your
+              friends for fun</p>
             <div class="project-links">
-              <a href="https://github.com/Tsantatsiory/quizzmasina" class="project-link">Source Code <i class="bi bi-arrow-up-right"></i></a>
+              <a href="https://github.com/Tsantatsiory/quizzmasina" class="project-link">Source Code <i
+                  class="bi bi-arrow-up-right"></i></a>
               <a href="https://quizzmasina.onrender.com" class="project-link project-link--primary">Live Demo <i
                   class="bi bi-arrow-up-right"></i></a>
             </div>
@@ -205,7 +229,8 @@
           inbox is always open.
         </p>
 
-        <form class="contact-form reveal-scale reveal-delay-4" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+        <form class="contact-form reveal-scale reveal-delay-4" id="contactForm"
+          action="https://api.web3forms.com/submit" method="POST">
           <input type="hidden" name="access_key" value="2b082ff4-785d-4318-8491-5010fde6a13c">
           <input type="hidden" name="subject" value="Nouveau message depuis le portfolio">
           <input type="hidden" name="botcheck" autocomplete="off">

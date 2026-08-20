@@ -302,41 +302,6 @@
     })();
 
     // ============================================
-    // NAV MOBILE — hamburger toggle
-    // ============================================
-    const navToggle = document.getElementById('navToggle');
-    const navLinks = document.getElementById('navLinks');
-
-    if (navToggle && navLinks) {
-        navToggle.addEventListener('click', () => {
-            const isOpen = navLinks.classList.toggle('open');
-            navToggle.classList.toggle('open', isOpen);
-            navToggle.setAttribute('aria-expanded', isOpen);
-            document.body.classList.toggle('nav-open', isOpen);
-        });
-
-        // ferme le menu au clic sur un lien simple (pas le trigger du dropdown)
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('open');
-                navToggle.classList.remove('open');
-                navToggle.setAttribute('aria-expanded', 'false');
-                document.body.classList.remove('nav-open');
-            });
-        });
-
-        // ferme le menu si on repasse en desktop (resize)
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 860 && navLinks.classList.contains('open')) {
-                navLinks.classList.remove('open');
-                navToggle.classList.remove('open');
-                navToggle.setAttribute('aria-expanded', 'false');
-                document.body.classList.remove('nav-open');
-            }
-        });
-    }
-
-    // ============================================
     // DROPDOWN
     // ============================================
     const dropdown = document.querySelector('.nav-dropdown');
@@ -454,3 +419,55 @@
         setTimeout(() => initScrollReveal(), 600);
     }
 })();
+
+    // ============================================
+    // PROGRESS BAR
+    // ============================================
+(function() {
+    const tags = document.querySelectorAll('.language-tag');
+    const progressFill = document.getElementById('progressFill');
+    const progressText = document.getElementById('progressText');
+    const percentageDisplay = document.getElementById('percentageDisplay');
+    const dots = document.querySelectorAll('.step-dot');
+
+    let currentIndex = 0;
+
+    // Met à jour la barre, les tags et les dots
+    function updateProgress(index) {
+      // Désactive tous les tags
+      tags.forEach(tag => tag.classList.remove('active'));
+
+      // Active le tag courant
+      if (tags[index]) {
+        tags[index].classList.add('active');
+      }
+
+      // Désactive tous les dots
+      dots.forEach(dot => dot.classList.remove('active'));
+
+      // Active le dot courant
+      if (dots[index]) {
+        dots[index].classList.add('active');
+      }
+
+      // Récupère la valeur depuis l'attribut data-value
+      const value = parseInt(tags[index].getAttribute('data-value'), 10);
+      const percent = Math.min(100, Math.max(0, value));
+
+      // Met à jour la barre
+      progressFill.style.width = percent + '%';
+      progressText.textContent = percent + '%';
+      percentageDisplay.innerHTML = percent + '<span class="percent-symbol">%</span>';
+    }
+
+    // Clic sur un tag → aller à ce tag
+    tags.forEach((tag, idx) => {
+      tag.addEventListener('click', function() {
+        currentIndex = idx;
+        updateProgress(currentIndex);
+      });
+    });
+
+    // Initialisation : premier tag actif
+    updateProgress(0);
+  })();
