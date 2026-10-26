@@ -250,9 +250,14 @@ header {
 }
 
 .nav-logo {
-  img {
-    width: 15%;
-  }
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo img {
+  width: clamp(40px, 5vw, 56px);
+  height: clamp(40px, 5vw, 56px);
+  object-fit: contain;
 }
 
 .nav-links {
@@ -541,7 +546,8 @@ img {
   padding: 1rem;
   border-radius: 24px;
   border: 1px solid var(--border);
-  width: 580px;
+  width: 100%;
+  max-width: 580px;
   text-align: center;
 }
 
@@ -1065,27 +1071,23 @@ footer {
    ============================================ */
 @media (max-width: 860px) {
   header {
-    padding: 1.1rem 1.5rem;
+    padding: 0.75rem 1.5rem;
   }
 
   .nav {
     justify-content: center;
   }
 
-  .nav-logo {
-    img {
-      transform: translateX(6rem);
-    }
-  }
-
-  .nav-toggle,
   .nav-links {
     display: none !important;
   }
 
-  .hero,
   section {
-    padding: 1.5rem 1.5rem;
+    padding: 4.5rem 2rem;
+  }
+
+  .hero {
+    padding: 0 2rem;
   }
 
   .hero .hero-bg-word.animate-in {
@@ -1119,16 +1121,49 @@ footer {
    RESPONSIVE — MOBILE
    ============================================ */
 @media (max-width: 540px) {
-  .nav-links {
-    gap: 1.25rem;
-  }
-
-  .nav-links a {
-    font-size: 0.68rem;
-  }
-
   section {
-    padding: 1.5rem 1.5rem;
+    padding: 3.5rem 1.25rem;
+  }
+
+  .hero {
+    min-height: 100svh;
+    height: auto;
+    padding: 6rem 1.25rem;
+  }
+
+  .about-image-wrap {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .about-image-tag {
+    right: 0.5rem;
+  }
+
+  .project-card {
+    padding: 1.35rem;
+  }
+
+  .project-card--large {
+    gap: 1rem;
+  }
+
+  .project-card--large .project-stack {
+    align-self: flex-start;
+  }
+
+  .design-card {
+    padding: 1rem;
+  }
+
+  .design-card-meta {
+    flex-wrap: wrap;
+    gap: 1rem 1.5rem;
+  }
+
+  .design-meta-value {
+    overflow-wrap: anywhere;
   }
 
   .contact-form {
@@ -2178,7 +2213,7 @@ body.is-loading footer {
   }
 
   body {
-    padding-bottom: 5.5rem;
+    padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
     /* évite que le contenu passe sous le nav flottant */
   }
 
@@ -2189,7 +2224,7 @@ body.is-loading footer {
     position: fixed;
     left: 1rem;
     right: 1rem;
-    bottom: 1rem;
+    bottom: max(1rem, env(safe-area-inset-bottom));
     z-index: 150;
     height: 64px;
     padding: 0 0.5rem;
@@ -2316,7 +2351,7 @@ body.is-loading footer {
   }
 
   body {
-    padding-bottom: 5rem;
+    padding-bottom: calc(5rem + env(safe-area-inset-bottom));
   }
 }
 
