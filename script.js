@@ -146,7 +146,7 @@
     }
 
     // ============================================
-    // BOTTOM NAV — indicateur glissant + scrollspy
+    // BOTTOM NAV - indicateur glissant + scrollspy
     // ============================================
     (function initBottomNav() {
         const nav = document.getElementById('bottomNav');
@@ -205,7 +205,7 @@
             }
         }
 
-        // recalcule la position au resize (changement d'orientation, etc.)
+
         window.addEventListener('resize', () => {
             const activeItem = nav.querySelector('.bottom-nav-item.active');
             if (activeItem) {
