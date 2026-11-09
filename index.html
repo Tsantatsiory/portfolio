@@ -230,9 +230,7 @@
         </p>
 
         <form class="contact-form reveal-scale reveal-delay-4" id="contactForm"
-          action="https://api.web3forms.com/submit" method="POST">
-          <input type="hidden" name="access_key" value="2b082ff4-785d-4318-8491-5010fde6a13c">
-          <input type="hidden" name="subject" value="Nouveau message depuis le portfolio">
+          action="/.netlify/functions/contact" method="POST">
           <input type="hidden" name="botcheck" autocomplete="off">
 
           <div class="form-row">

@@ -330,7 +330,7 @@
     }
 
     // ============================================
-    // CONTACT FORM — envoi AJAX via Web3Forms
+    // CONTACT FORM — envoi via la fonction serveur Netlify
     // ============================================
     (function initContactForm() {
         const form = document.getElementById('contactForm');
@@ -355,7 +355,7 @@
             const payload = Object.fromEntries(formData.entries());
 
             try {
-                const response = await fetch('https://api.web3forms.com/submit', {
+                const response = await fetch(form.action, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
                     body: JSON.stringify(payload)
@@ -363,7 +363,7 @@
 
                 const result = await response.json();
 
-                if (result.success) {
+                if (response.ok && result.success) {
                     showStatus('success', 'Message sent — I\'ll get back to you soon.');
                     form.reset();
                 } else {
