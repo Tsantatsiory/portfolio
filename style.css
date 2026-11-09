@@ -1732,6 +1732,12 @@ body.is-loading footer {
   }
 }
 
+@media (max-width: 540px) {
+  .cv-download {
+    width: 100%;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
 
   .cv-download,
