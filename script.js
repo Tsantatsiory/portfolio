@@ -122,6 +122,7 @@
         const heroTitle = hero.querySelector('.hero-title');
         const heroSub = hero.querySelector('.hero-sub');
         const heroScrollHint = hero.querySelector('.hero-scroll-hint');
+        const heroSocialLink = hero.querySelector('.hero-social-link');
         const heroBg = hero.querySelector('.hero-bg-word');
 
         if (heroCategory) {
@@ -142,6 +143,10 @@
 
         if (heroScrollHint) {
             setTimeout(() => heroScrollHint.classList.add('animate-in'), 850);
+        }
+
+        if (heroSocialLink) {
+            setTimeout(() => heroSocialLink.classList.add('animate-in'), 1050);
         }
     }
 
