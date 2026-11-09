@@ -330,7 +330,7 @@
     }
 
     // ============================================
-    // CONTACT FORM — envoi via la fonction serveur Netlify
+    // CONTACT FORM — envoi via Netlify Forms
     // ============================================
     (function initContactForm() {
         const form = document.getElementById('contactForm');
@@ -357,13 +357,11 @@
             try {
                 const response = await fetch(form.action, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-                    body: JSON.stringify(payload)
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(payload).toString()
                 });
 
-                const result = await response.json();
-
-                if (response.ok && result.success) {
+                if (response.ok) {
                     showStatus('success', 'Message sent — I\'ll get back to you soon.');
                     form.reset();
                 } else {
