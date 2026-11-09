@@ -457,7 +457,9 @@
       // Met à jour la barre
       progressFill.style.width = percent + '%';
       progressText.textContent = percent + '%';
-      percentageDisplay.innerHTML = percent + '<span class="percent-symbol">%</span>';
+      if (percentageDisplay) {
+        percentageDisplay.innerHTML = percent + '<span class="percent-symbol">%</span>';
+      }
     }
 
     // Clic sur un tag → aller à ce tag
